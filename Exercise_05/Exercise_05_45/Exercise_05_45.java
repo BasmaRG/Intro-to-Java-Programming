@@ -8,30 +8,42 @@ ages? If all the students are the same age, the deviation is 0.
 Write a program that prompts the user to enter ten numbers, and displays the
 mean and standard deviations of these numbers using the following formula:
 */
-import java.util.Scanner;
 
-public class Exercise_05_45 {
-	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-		double mean, 				// Holds the mean
-				 deviation, 		// Holds the standard deviation
-				 number;				// Holds user input
-		mean = deviation = 0;	// Set mean and deviation to 0
-
-		// Prompt the user to enter ten numbers
+     import java.util.Scanner;
+     public class Exercises5 {
+     public static void main(String[] args) {
+      Scanner input = new Scanner(System.in);
+                double [] numbers = new double [10] ;	
 		System.out.print("Enter ten numbers: ");
-
-		// Compute mean and standard deviation
-		for (int i = 1; i <= 10; i++) {
-			number = input.nextDouble();
-			mean += number;
-			deviation += Math.pow(number, 2); 
-		}
-		deviation =  Math.sqrt((deviation - (Math.pow(mean, 2) / 10)) / (10 - 1));
-		mean /= 10;
-
-		// Display results
-		System.out.println("The mean is " + mean);
-		System.out.printf("The standard deviation is %.5f\n", deviation);
-	}
-}
+		for (int i = 0; i < 10; i++) 
+			numbers[i] = input.nextDouble();
+                
+		double mean,deviation;
+               
+                mean = mean(numbers);
+                deviation = std(numbers, mean);
+                
+                System.out.println("The mean is " + mean);
+		    System.out.printf("The standard deviation is %.5f\n", deviation);
+                
+      }
+      public static double mean(double numArray[]){
+            double sum = 0.0;
+            int length = numArray.length;
+            for(double num : numArray)
+            sum += num;
+        
+            double mean = sum/length;
+            
+            return mean;
+        }
+     
+        public static double std(double numArray[] , double mean{
+        double standardDeviation = 0.0;
+        int length = numArray.length;
+        for(double num: numArray) {
+            standardDeviation += Math.pow(num - mean, 2);
+        }
+       return Math.sqrt(standardDeviation /(length - 1));
+     }
+    }
